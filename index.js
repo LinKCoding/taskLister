@@ -1,22 +1,27 @@
+giantList = []
+
 document.addEventListener("DOMContentLoaded", () => {
+
   const addList = document.getElementById('add_list')
   const newList = document.getElementById('list_title')
-  const decimate = document.getElementById('list-of-lists');
-  console.log(decimate);
+  const listsOfLists = document.getElementById('list-of-lists');
+  const addTask = document.getElementById("add_task")
+  console.log(addList);
+  console.log(newList);
 
   addList.addEventListener("submit", () => {
     event.preventDefault()
     addListHandler(newList)
+    addTask.hidden = false
+    selectionHandler(addTask, newList)
   })
 
-  decimate.addEventListener("click", () => {
+  listsOfLists.addEventListener("click", function() {
     if(event.target.className === 'decimate') {
-      let x = event.target
-      console.log(event.target);
-      decimate.removeChild(x)
+      delete giantList[event.target.id]
+      this.removeChild(this.children[event.target.id])
+      selectionHandler(addTask, newList)
     }
-
   })
-//
 
 })
