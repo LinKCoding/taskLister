@@ -11,9 +11,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   decimate.addEventListener("click", () => {
     if(event.target.className === 'decimate') {
-      debugger
+      let x = event.target
       console.log(event.target);
-      decimate.removeChild(decimate.querySelector(`button id = ${id}`))
+      decimate.removeChild(x)
     }
 
   })
