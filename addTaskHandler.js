@@ -1,14 +1,18 @@
-function selectionHandler(addTask, newList) {
-  console.log(addTask);
-  console.log(newList);
-  // debugger
-  let options = ""
+function addTaskHandler(addTask){
+  let currentList = addTask.select_list.value /*list3 */
+  let taskDescription = addTask.task_description.value /*task1 */
+  let taskPriority = addTask.task_priority.value/*3 */
 
-  for(let i = 0; i < giantList.length; i++) {
-    if(giantList[i]) {
-      options += `<option> ${Object.keys(giantList[i])} </option>`
+  for(let i = 0; i < giantList.length; i++){
+    if (Object.keys(giantList[i])[0] === currentList){
+      giantList[i][currentList].push({name: taskDescription, priority: taskPriority})
+      let element = document.createElement('li')
+      element.innerHTML = `Name: ${taskDescription}, Priority: ${taskPriority}`
+      let listToAppendTo = document.getElementById(`listsOfLists${i}`)
+      listToAppendTo.children[1].appendChild(element)
     }
+
   }
-  addTask.children["select_list"].innerHTML = options
+
 
 }

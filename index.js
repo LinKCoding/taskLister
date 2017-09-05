@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const newList = document.getElementById('list_title')
   const listsOfLists = document.getElementById('list-of-lists');
   const addTask = document.getElementById("add_task")
-  console.log(addList);
-  console.log(newList);
+
 
   addList.addEventListener("submit", () => {
     event.preventDefault()
@@ -22,6 +21,13 @@ document.addEventListener("DOMContentLoaded", () => {
       this.removeChild(this.children["listsOfLists" + event.target.id])
       selectionHandler(addTask, newList)
     }
+  })
+
+  addTask.addEventListener("submit", function() {
+    event.preventDefault()
+    addTaskHandler(addTask)
+
+
   })
 
 })
