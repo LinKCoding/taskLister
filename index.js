@@ -17,9 +17,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   listsOfLists.addEventListener("click", function() {
     if(event.target.className === 'decimate') {
-      delete giantList[event.target.id]
-      this.removeChild(this.children["listsOfLists" + event.target.id])
-      selectionHandler(addTask, newList)
+      if (event.target.parentElement.parentElement.nodeName === "OL"){
+        delete giantList[event.target.id]
+        this.removeChild(this.children["listsOfLists" + event.target.id])
+        selectionHandler(addTask, newList)
+      }else{
+        event.target.parentElement.parentElement.removeChild(event.target.parentElement)
+      }
     }
   })
 
